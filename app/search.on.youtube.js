@@ -9,10 +9,8 @@ DEFAULT_SEARCH_CRITERIA = {
     maxResults: 1
 };
 
-Youtube.authenticate({
-    type: "oauth",
-    token: credentials.AUTHORIZATION_TOKEN
-});
+credentials.authenticate();
+
 
 function search(songInfo, callbackWhenFound) {
     var query = songInfo.queryRepresentation();

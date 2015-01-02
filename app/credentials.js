@@ -1,7 +1,21 @@
 /**
  * Created by novy on 02.01.15.
  */
+var Youtube = require("youtube-api");
 
-module.exports.CLIENT_ID = '864505085419-el1g6lnvjlc91sfup8opu67mjfgfe22p.apps.googleusercontent.com';
-module.exports.AUTHORIZATION_TOKEN = 'ya29.7wAG0KQT6Gv7gF-r_Rbi4BNqO_NFemmiWrn6r4GUSTwtNjX3l1fG8Zp2En3TztTOgrWNXA8Y2f1imA';
-module.exports.API_KEY = 'AIzaSyCXjHmkR7nMIDg7-UQNgOnY_OBK9McdSks';
+CLIENT_ID = 'cid';
+AUTHORIZATION_TOKEN = 'atok';
+API_KEY = 'apik';
+
+
+function authenticate() {
+    Youtube.authenticate({
+        type: "oauth",
+        token: AUTHORIZATION_TOKEN
+    });
+}
+
+module.exports.CLIENT_ID = CLIENT_ID;
+module.exports.AUTHORIZATION_TOKEN = AUTHORIZATION_TOKEN;
+module.exports.API_KEY = API_KEY;
+module.exports.authenticate = authenticate;

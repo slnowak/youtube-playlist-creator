@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "youtube-api": "latest",
-    "underscore": "latest"
+    "underscore": "latest",
+    "q": "latest"
   }
 }
