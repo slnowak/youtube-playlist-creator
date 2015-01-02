@@ -2,18 +2,16 @@
  * Created by novy on 02.01.15.
  */
 
+function SongInfo(artist, title) {
+
+  this.artist = artist;
+  this.title = title;
+
+}
+
 SongInfo.prototype.queryRepresentation = function() {
   return this.artist + ' ' + this.title
 };
-
-function SongInfo(artist, title) {
-
-  return {
-    'artist': artist,
-    'title': title
-  };
-
-}
 
 function parse(line) {
   var splitLine = line.split(";");

@@ -9,6 +9,10 @@ function Song(artist, title, videoId) {
 }
 
 module.exports.parse = function(songInfo, youtubeApiResponse) {
+    if (!youtubeApiResponse) {
+        throw new Error('Got null response body!')
+    }
+
     if (!youtubeApiResponse.items.length) {
         return null
     }
