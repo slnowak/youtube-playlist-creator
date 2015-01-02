@@ -9,5 +9,6 @@
     "start": "node ./app/app.js"
   },
   "dependencies": {
+    "youtube-api": "latest"
   }
 }

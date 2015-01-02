@@ -2,11 +2,17 @@
  * Created by novy on 02.01.15.
  */
 
+SongInfo.prototype.queryRepresentation = function() {
+  return this.artist + ' ' + this.title
+};
+
 function SongInfo(artist, title) {
+
   return {
     'artist': artist,
     'title': title
-  }
+  };
+
 }
 
 function parse(line) {
@@ -22,7 +28,7 @@ function parse(line) {
     throw new Error('Title cannot be empty!')
   }
 
-  return SongInfo(trimmedArtist, trimmedTitle)
+  return new SongInfo(trimmedArtist, trimmedTitle)
 }
 
 module.exports.parse = parse;
