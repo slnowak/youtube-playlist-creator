@@ -1,0 +1,13 @@
+{
+  "name": "youtube-playlist-creator",
+  "version": "0.0.0",
+  "devDependencies": {
+    "mocha": "latest"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node ./app/app.js"
+  },
+  "dependencies": {
+  }
+}
