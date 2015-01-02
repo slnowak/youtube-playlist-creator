@@ -26,7 +26,9 @@ playlist.createPlaylist('playlist')
         songsInfo.forEach(function(songInfo) {
         youtube.search(songInfo, function(songInfo, resp) {
             var song = songParser.parse(songInfo, resp);
-            playlist.addSongToPlaylist(song, playlistId)
+            if (song !== null) {
+                playlist.addSongToPlaylist(song, playlistId)
+            }
         })
     });
 

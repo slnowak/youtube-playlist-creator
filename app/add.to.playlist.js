@@ -4,6 +4,7 @@
 var Youtube = require("youtube-api");
 var credentials = require("./credentials.js");
 var Q = require("q");
+var DELAY_TIME = 5000;
 
 credentials.authenticate();
 
@@ -46,15 +47,19 @@ function addSongToPlaylist(song, playlistId) {
         kind: 'youtube#video'
     };
 
-    Youtube.playlistItems.insert(
-        createRequestData(details, playlistId),
-        function(error, response) {
-            if (error) {
-                console.log(response);
-                console.log(error)
+    //before you start screaming, laughing or anything else, read this:
+    //http://www.acnenomor.com/3037813p1/playlistitems-batch-insert-youtube-api-v3
+    //this is only a ad-hoc fix to google's api, should be fixed later
+    setTimeout(function() {
+        Youtube.playlistItems.insert(
+            createRequestData(details, playlistId),
+            function (error, response) {
+                if (error) {
+                    console.log(error)
+                }
             }
-        }
-    )
+        )
+    }, Math.random() * DELAY_TIME);
 }
 
 function createRequestData(details, playlistId) {
