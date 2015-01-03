@@ -40,26 +40,16 @@ function createPlaylist(title) {
     return deferredPlaylistId.promise;
 }
 
-function addSongToPlaylist(song, playlistId) {
+function addSongToPlaylist(song, playlistId, callback) {
     var details = {
         videoId: song.videoId,
         kind: 'youtube#video'
     };
 
-    var def = Q.defer();
-
     Youtube.playlistItems.insert(
         createRequestData(details, playlistId),
-        function (error, response) {
-            if (error) {
-                console.log(error)
-            } else {
-                def.resolve(response)
-            }
-        }
+        callback
     );
-
-    return def.promise;
 }
 
 function createRequestData(details, playlistId) {

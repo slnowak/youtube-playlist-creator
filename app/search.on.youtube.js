@@ -16,14 +16,7 @@ function search(songInfo, callbackWhenFound) {
     var query = songInfo.queryRepresentation();
     var searchCriteria = underscore.extend(DEFAULT_SEARCH_CRITERIA, {q: query})
 
-    //fix!
-    Youtube.search.list(searchCriteria, function(err, response) {
-        if (err) {
-            console.log(err)
-        } else {
-            callbackWhenFound(songInfo, response)
-        }
-    })
+    Youtube.search.list(searchCriteria, callbackWhenFound);
 }
 
 module.exports.search = search;

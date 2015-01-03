@@ -27,16 +27,16 @@ playlist.createPlaylist('playlist')
 
         songsInfo.reduce(function (accumulatedPremise, songInfo) {
             return accumulatedPremise.then(function (response) {
-                var def = Q.defer();
-                youtube.search(songInfo, function (songInfo, resp) {
-                    var song = songParser.parse(songInfo, resp);
-                    if (song !== null) {
-                        playlist.addSongToPlaylist(song, playlistId).then(function(response) {
-                            def.resolve(response)
-                        })
-                    }
-                });
-                return def.promise;
+                return Q.ninvoke(youtube, 'search', songInfo)
+                    .then(function (response) {
+                        var song = songParser.parse(songInfo, response[0]);
+                        if (song !== null) {
+                            return Q.ninvoke(playlist, 'addSongToPlaylist', song, playlistId)
+                        }
+                        return Q()
+                    }, function(error) {
+                        throw new Error()
+                    });
             })}, Q());
 
         });
